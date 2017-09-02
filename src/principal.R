@@ -1,10 +1,21 @@
-# Exercício de Qualidade de Dados utilizando a linguagem R
+# Laboratório de Qualidade de Dados utilizando a linguagem R
 # agosto de 2017
 # @author: Arnaldo Vitaliano
 
-library(stringr)
-library(dplyr)
+#### import start
+# importando e carregando bibliotecas R utilizadas neste exercício
+if(!require(stringr)){
+        install.packages("stringr")
+        library(stringr)
+}
 
+if(!require(dplyr)){
+        install.packages("dplyr")
+        library(dplyr)
+}
+#### import end
+
+hist(rnorm(1000))
 # importa o arquivo CSV para um data.frame
 censo.df <- read.csv2("data/Censo.novo.csv", stringsAsFactors = FALSE)
 
