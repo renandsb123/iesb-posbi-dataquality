@@ -25,31 +25,41 @@ git clone https://github.com/seuusuario/iesb-posbi-dataquality.git
 
 ## Comandos básicos
 
-## Adicionar um arquivo alterado/criado localmente para a área de Stage
-1. Criem um arquivo txt simples com o seguinte comando:
+## 1. Adicionar um arquivo alterado/criado localmente para a área de Stage
+* Criem um arquivo txt simples com o seguinte comando:
 ```bash
 echo "meu arquivo com linha A" > arquivo.txt
 ```
-2. Executem o comando que verifica o **status** do seu repositório local:
+## 2. Verificar o estado do repositório
+* Executem o comando que verifica o **status** do seu repositório local:
 ```bash
 git status
 ```
 * Este comando mostra que existe um arquivo chamado **arquivo.txt** que não está sendo **tracked** pelo git.
-3. Vamos adicionar o arquivo ao repositório local com o comando abaixo:
+
+## 3. Adicionar o arquivo ao repositório local
+* Vamos adicionar o arquivo ao repositório local com o comando abaixo:
 ```bash
 git add arquivo.txt
 ```
-4. Agora execute o comando **git status** novamente, para ver o que acontece:
+
+## 4. Verificar novamente o estado do repositório
+* Agora execute o comando **git status** novamente, para ver o que acontece:
 * O arquivo **arquivo.txt** agora está no estado **modified**, ou seja, está na área temporária do repositório.
-5. Agora, vamos incluir as alterações no **HEAD** do repositório, ou seja, criar um **commit** para incluir a alteração:
+
+## 5. Incluir as alterações no repositório
+* Agora, vamos incluir as alterações no **HEAD** do repositório, ou seja, criar um **commit** para incluir a alteração:
 ```bash
 git commit -m "mensagem do commit"
 ```
-6. Para conferir se tudo foi feito de maneira correta, podemos usar o comando **git log**:
+## 6. Conferindo as alterações
+* Para conferir se tudo foi feito de maneira correta, podemos usar o comando **git log**:
 ```bash
 git log
 ```
-7. Por último, vamos jogar os últimos commits realizados para a versão remota do nosso repositório
+
+## 7. Levar as alterações para o repositório remoto
+* Por último, vamos jogar os últimos commits realizados para a versão remota do nosso repositório
 ```bash
 git push origin master
 ```
