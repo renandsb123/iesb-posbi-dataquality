@@ -244,7 +244,8 @@ censo$Salario <- as.numeric(str_replace(censo$Salario, "\\.", ""))
 fumantes.por.sexo <- censo %>% 
         filter(Fuma == 1) %>%
         group_by(Sexo) %>%
-        summarise(quantidade=n())
+        summarise(quantidade=n()) %>%
+        arrange(desc(quantidade))
 fumantes.por.sexo
 
 quantidade.por.sexo.fumante <- censo %>% 
@@ -259,5 +260,5 @@ censo.nome.cpf
 cadastro <- read.csv2("data/CadastroCPF.csv")
 head(cadastro)
 m <- merge(cadastro, censo.nome.cpf, by = "CPF", all.y=TRUE)
-m %>% filter(is.na(Nome.x)) %>% View
-
+registros.problema.identificacao <- m %>% filter(is.na(Nome.x))
+View(registros.problema.identificacao)
