@@ -1,4 +1,4 @@
-Seq;CPF;Nome;Sexo;DataNasc;CodReg;CodMunic;CategProf;AnosEstudo;AnosEmprego;Salario;Altura (cm);Peso (kg);Fuma (1=sim, 0=no)
+Seq;CPF;Nome;Sexo;DataNasc;CodReg;CodMunic;CategProf;AnosEstudo;AnosEmprego;Salario;Altura.cm;Peso.kg;Fuma 
 1;036054671-48;Gilberto M. Sasaky;M;12/11/69;100;101;C;16;11;8.794;164;70;1
 2;904748223-97;Cleide Q. Furkin;F;06/08/75;100;101;C;16;12;8.422;156;54;0
 3;015787295-56;Romário Lemos;M;15/05/56;100;101;D;16;24;6.697;181;77;0
