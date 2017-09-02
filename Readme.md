@@ -58,7 +58,7 @@ git commit -m "mensagem do commit"
 git log
 ```
 
-## Levar as alterações para o repositório remoto
+## 7. Levar as alterações para o repositório remoto
 * Por último, vamos jogar os últimos commits realizados para a versão remota do nosso repositório
 ```bash
 git push origin master
