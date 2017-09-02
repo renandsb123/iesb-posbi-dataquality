@@ -49,6 +49,13 @@ git commit -m "mensagem do commit"
 ```bash
 git log
 ```
+7. Por último, vamos jogar os últimos commits realizados para a versão remota do nosso repositório
+```bash
+git push origin master
+```
+* Este comando joga os commits realizados para o branch **master** no caminho **origin**
+* Para saber onde **origin** aponta, digite o comando **git remote -v**
+
 
 
 
