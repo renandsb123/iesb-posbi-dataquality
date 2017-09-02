@@ -181,6 +181,83 @@ sum(valor_por_hora * horas_trabalhadas)
 mtcars
 write.csv2(mtcars, "mtcars.csv")
 
-censo <- read.csv2("data/Censo.novo.csv")
+# Carregar um CSV em um data frame
+censo <- read.csv2("data/Censo.csv", stringsAsFactors = FALSE)
 censo
+#estrutura do data frame
+str(censo)
+#nomes das colunas do data frame
+names(censo)
+#visualizar os dados
+View(censo)
+
+# Acessar colunas do data frame
+censo[3] #pelo índice da coluna
+censo$Nome #pelo nome da coluna
+censo["Nome"] #outra maneira de acesso pelo nome
+censo[c(2,3)] #varias colunas ao mesmo tempo
+censo[c("Nome","CPF")]
+
+altura <- censo$Altura.cm #joga a coluna Altura para um vetor
+summary(altura) #verifica estatísticas básicas
+media.altura <- mean(altura) #média
+desvio.altura <- sd(altura) #desvio padrão
+altura > media.altura + 4*desvio.altura # valores que são maiores que média + 4*desvios
+gigantes <- altura[ altura > media.altura + 4*desvio.altura ] 
+gigantes
+
+# Incluir nova coluna no data frame
+censo$imc <- censo$Peso.kg / (censo$Altura.cm/100)^2
+summary(censo$imc)
+censo$imc <- NULL
+
+# Funções
+head(censo)
+tail(censo)
+# subset
+censo[1, ]
+censo[, 1]
+censo[1,1]
+censo[, 3]
+censo[1:10, c(3,4,5)]
+censo[, c("Nome", "CPF", "Sexo")]
+unique(censo$Sexo)
+
+# Manipulando data frames com a biblioteca dplyr
+library(dplyr)
+fumantes.por.sexo <- censo %>% 
+        filter(Fuma == 1) %>%
+        group_by(Sexo) %>%
+        summarise(quantidade=n())
+fumantes.por.sexo
+
+# substituir Fem. por F, e Masc. por M
+# seleciona o indice das linhas que contem "Fem." e "Masc."
+fem.errados <- censo$Sexo == "Fem."
+masc.errados <- censo$Sexo == "Masc."
+# substitui os valores pelos valores corretos, aplicando o filtro
+censo[fem.errados, ]$Sexo <- "F"
+censo[masc.errados, ]$Sexo <- "M"
+
+library(stringr)
+censo$Salario <- as.numeric(str_replace(censo$Salario, "\\.", ""))
+fumantes.por.sexo <- censo %>% 
+        filter(Fuma == 1) %>%
+        group_by(Sexo) %>%
+        summarise(quantidade=n())
+fumantes.por.sexo
+
+quantidade.por.sexo.fumante <- censo %>% 
+        group_by(Sexo, Fuma) %>%
+        summarise(quantidade=n())
+quantidade.por.sexo.fumante
+
+# Função merge
+censo.nome.cpf <- censo[, c("CPF", "Nome")]
+censo.nome.cpf
+
+cadastro <- read.csv2("data/CadastroCPF.csv")
+head(cadastro)
+m <- merge(cadastro, censo.nome.cpf, by = "CPF", all.y=TRUE)
+m %>% filter(is.na(Nome.x)) %>% View
 
