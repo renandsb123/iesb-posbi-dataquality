@@ -1,0 +1,1 @@
+# primeiro arquivo da aula de data quality
